@@ -53,4 +53,7 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
     include(CTest)
 endif()
 
+add_executable(dmtx_example example.c)
+target_link_libraries(dmtx_example PUBLIC dmtx_static)
+
 # vim: ft=cmake ts=2 sw=2 sts=2 et
