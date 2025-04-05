@@ -7,25 +7,28 @@
 
 #include "dmtx.h"
 
-#define DATA "ABC123"
+int main(int argc, char **argv) {
+  if (argc < 2) {
+    printf("error: missing argument\n");
+    return -1;
+  }
+  const char *data = argv[1];
 
-int main(void) {
   DmtxEncode *enc;
   if ((enc = dmtxEncodeCreate()) == NULL) {
-    printf("error: create");
+    printf("error: create\n");
     return -1;
   }
 
-  const char *data = DATA;
   int err = dmtxEncodeDataMatrix(enc, (int)strlen(data), (unsigned char *)data);
   if (err != DmtxPass) {
-    printf("error: encode");
+    printf("error: encode\n");
     return -1;
   }
 
   int symbolRow, symbolCol;
 
-  fputs("\n██", stdout);
+  fputs("██", stdout);
   for (symbolCol = 0; symbolCol < enc->region.symbolCols; symbolCol++) {
     fputs("██", stdout);
   }
