@@ -179,7 +179,7 @@ dmtxEncodeGetProp(DmtxEncode *enc, int prop)
    int sizeIdx;
    int width, height, bitsPerPixel;
    unsigned char *pxl;
-   DmtxByte outputStorage[4096];
+   DmtxByte outputStorage[inputSize * 3 / 2]; // todo: check actual size.
    DmtxByteList output = dmtxByteListBuild(outputStorage, sizeof(outputStorage));
    DmtxByteList input = dmtxByteListBuild(inputString, inputSize);
 
